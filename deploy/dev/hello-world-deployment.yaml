@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-secondary-repo
+  namespace: default
+  labels:
+    app:  nginx-secondary-repo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-secondary-repo
+  template:
+    metadata:
+      labels:
+        app:  nginx-secondary-repo
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
